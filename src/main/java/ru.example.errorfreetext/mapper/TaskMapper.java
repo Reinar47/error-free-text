@@ -22,12 +22,6 @@ public interface TaskMapper {
     TaskEntity toNewTask(RequestForTask request);
 
 
-    TaskCreatedResponseDto toTaskCreatedResponseDto(TaskEntity task);
-
-
-//    TaskStatusResponseDto toTaskStatusResponseDto(TaskEntity task);
-
-
     @Mapping(target = "correctedText", source = "task", qualifiedByName = "resolveCorrectedText")
     TaskStatusResponseDto toTaskStatusResponseDto(TaskEntity task);
 

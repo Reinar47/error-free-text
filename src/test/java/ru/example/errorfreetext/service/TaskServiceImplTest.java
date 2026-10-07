@@ -1,13 +1,12 @@
 package ru.example.errorfreetext.service;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import ru.example.errorfreetext.Utils.EntityGeneratorTest;
+import ru.example.errorfreetext.Utils.EntityGenerator;
 import ru.example.errorfreetext.Utils.FindAndCheckService;
 import ru.example.errorfreetext.constant.TaskStatus;
 import ru.example.errorfreetext.dto.request.RequestForTask;
@@ -46,12 +45,12 @@ class TaskServiceImplTest {
 
     @BeforeEach
     void setup() {
-        EntityGeneratorTest entityGeneratorTest = new EntityGeneratorTest();
-        request = entityGeneratorTest.getRequest();
-        mapped = entityGeneratorTest.getMapped();
-        id = entityGeneratorTest.getId();
-        saved = entityGeneratorTest.getSaved();
-        task = entityGeneratorTest.getTask();
+        EntityGenerator entityGenerator = new EntityGenerator();
+        request = entityGenerator.getRequest();
+        mapped = entityGenerator.getMapped();
+        id = entityGenerator.getId();
+        saved = entityGenerator.getSaved();
+        task = entityGenerator.getTask();
     }
 
     @Test

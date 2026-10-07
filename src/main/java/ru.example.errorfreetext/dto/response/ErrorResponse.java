@@ -27,14 +27,4 @@ public class ErrorResponse {
 
     @Schema(description = "Путь запроса", example = "/error-free-text/tasks/44bd78dc-d08c-41c6-b87d-fb82046bd470")
     private String path;
-
-
-//    @Override
-//    public String toString() {
-//
-//        return "errorMessage: " + errorMessage + "\n" +
-//                "errorCode: " + errorCode + "\n" +
-//                "timestamp: " + timestamp + "\n" +
-//                "path: " + path;
-//    }
 }

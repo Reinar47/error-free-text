@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.example.errorfreetext.Utils.FindAndCheckService;
-import ru.example.errorfreetext.constant.TaskStatus;
 import ru.example.errorfreetext.dto.request.RequestForTask;
 import ru.example.errorfreetext.dto.response.TaskStatusResponseDto;
 import ru.example.errorfreetext.entity.TaskEntity;

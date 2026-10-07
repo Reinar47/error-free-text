@@ -26,5 +26,4 @@ public class TaskStatusResponseDto {
     @Schema(description = "Описание ошибки (заполнено только при статусе ERROR)",
             example = "Yandex Speller request failed")
     private String errorMessage;
-
 }

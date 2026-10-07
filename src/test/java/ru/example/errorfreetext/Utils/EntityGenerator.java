@@ -9,7 +9,7 @@ import ru.example.errorfreetext.entity.TaskEntity;
 import java.util.UUID;
 
 @Getter
-public class EntityGeneratorTest {
+public class EntityGenerator {
 
     UUID id = UUID.randomUUID();
 
@@ -38,3 +38,4 @@ public class EntityGeneratorTest {
             .correctedText("Привет мир")
             .build();
 }
+

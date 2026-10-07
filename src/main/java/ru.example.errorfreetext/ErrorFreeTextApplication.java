@@ -3,7 +3,6 @@ package ru.example.errorfreetext;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
-import ru.example.errorfreetext.dto.response.ErrorResponse;
 
 @EnableScheduling
 @SpringBootApplication
