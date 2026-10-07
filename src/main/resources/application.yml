@@ -1,0 +1,83 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: Error-Free-Text
+
+  jackson:
+    time-zone: Europe/Moscow
+    serialization:
+      write-dates-as-timestamps: false
+
+  datasource:
+    url: ${PSQL_DATASOURCE_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${PSQL_DATASOURCE_USERNAME:postgres}
+    password: ${PSQL_DATASOURCE_PASSWORD:Caruman4747}
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      maximum-pool-size: 20
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+        show_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  liquibase:
+    change-log: classpath:db.migration/db.changelog-master.xml
+    database-change-log-lock-table: LIQ_DATABASECHANGELOGLOCK
+    database-change-log-table: LIQ_DATABASECHANGELOG
+    driver-class-name: org.postgresql.Driver
+    liquibase-schema: public
+    url: ${spring.datasource.url}
+    user: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+
+scheduler:
+  fixed-delay-ms: 5000
+  batch-size: 10
+
+yandex:
+  speller:
+    url: https://speller.yandex.net/services/spellservice.json/checkTexts
+    connect-timeout-ms: 5000
+    read-timeout-ms: 10000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+      show-components: always
+
+logging:
+  level:
+    root: info
+    ru.errorfreetext.controller: INFO
+    ru.errorfreetext.service: DEBUG
+    ru.errorfreetext.repository: WARN
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  file:
+    name: logs/application.log
+    path: ./logs
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 30
+      clean-history-on-start: false
+
+info:
+  app:
+    description: Open api ??? ??????? ?????????????? ????????????? ??????
+    version: 1.0.0
+    summary: ?????? ??? ????????????? ???????? ????? Yandex Speller

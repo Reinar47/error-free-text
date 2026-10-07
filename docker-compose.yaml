@@ -1,0 +1,50 @@
+version: "3.8"
+
+name: error-free-text-service
+
+services:
+
+  error-free-text:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: error-free-text
+    container_name: error-free-text
+    restart: always
+    networks:
+      - cloud
+    depends_on:
+      database-error-free-text:
+        condition: service_healthy
+    environment:
+      - PSQL_DATASOURCE_URL=jdbc:postgresql://database-error-free-text:5432/eft_db
+      - PSQL_DATASOURCE_USERNAME=eft_user
+      - PSQL_DATASOURCE_PASSWORD=eft_password
+      - SPRING_JPA_PROPERTIES_HIBERNATE_DIALECT=org.hibernate.dialect.PostgreSQLDialect
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+    ports:
+      - "8080:8080"
+
+  database-error-free-text:
+    image: postgres:16-alpine
+    container_name: database-error-free-text
+    restart: always
+    ports:
+      - "65433:5432"
+    environment:
+      POSTGRES_DB: eft_db
+      POSTGRES_USER: eft_user
+      POSTGRES_PASSWORD: eft_password
+    volumes:
+      - ./postgres-eft:/var/lib/postgresql/data
+    networks:
+      - cloud
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U eft_user -d eft_db"]
+      interval: 10s
+      timeout: 10s
+      retries: 3
+
+networks:
+  cloud:
+    driver: bridge

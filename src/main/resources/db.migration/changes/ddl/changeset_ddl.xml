@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   logicalFilePath="path-independent"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet id="2026-10-06-1_create_table_tasks" author="A.A" runAlways="true" runOnChange="true">
+        <comment>Создание таблицы tasks</comment>
+        <sqlFile path="sql/init/2026-10-06-1_create_table_tasks.sql"
+                 relativeToChangelogFile="true"
+                 splitStatements="true"
+                 stripComments="true" />
+        <rollback>
+            <sqlFile path="sql/rollback/2026-10-06-1_drop_table_tasks.sql"
+                     relativeToChangelogFile="true"
+                     splitStatements="true"
+                     stripComments="true" />
+        </rollback>
+    </changeSet>
+
+</databaseChangeLog>
