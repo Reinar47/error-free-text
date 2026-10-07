@@ -5,7 +5,6 @@ import org.mapstruct.Mapping;
 import org.mapstruct.Named;
 import ru.example.errorfreetext.constant.TaskStatus;
 import ru.example.errorfreetext.dto.request.RequestForTask;
-import ru.example.errorfreetext.dto.response.TaskCreatedResponseDto;
 import ru.example.errorfreetext.dto.response.TaskStatusResponseDto;
 import ru.example.errorfreetext.entity.TaskEntity;
 
